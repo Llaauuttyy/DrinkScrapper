@@ -1,0 +1,2 @@
+class GroceriesScrapper
+end
