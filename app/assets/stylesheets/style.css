@@ -1,0 +1,75 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+h1 {
+    color: red
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    width: 100vw;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.product_image {
+    height: 10rem;
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 14rem;
+    height: 20rem;
+    border-radius: 10pt;
+    background: white;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+    -moz-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+    -o-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+    -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+    text-align: center;
+    -moz-transition: 0.5s ease;
+    -webkit-transition: 0.5s ease;
+    -o-transition: 0.5s ease;
+    transition: 0.5s ease;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    cursor: pointer;
+    flex: 1 1 auto;
+    flex-shrink: 0;
+    border-style: solid;
+    border-color: #b5b5b5;
+    border-width: 1px;
+    padding: 1rem 1rem
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.product_info {
+    color: #680653;
+    font-weight: 700;
+    margin: 0;
+}
