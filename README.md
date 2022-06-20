@@ -1,4 +1,4 @@
-# TpIntegradorRuby
+# SuperMarket Scrapper
 
 ## Dependencias
 
