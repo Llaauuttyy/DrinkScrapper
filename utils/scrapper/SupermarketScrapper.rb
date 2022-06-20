@@ -4,7 +4,7 @@ require_relative "ProductAdapter.rb"
 
 MAX_PAGES_TO_SCRAP = 10
 
-class DrinkScrapper
+class SupermarketScrapper
     # Se encarga de controlar el flujo de scrapping de las paginas y los productos.
     def initialize
         @page_scrapper = PageScrapper.new
