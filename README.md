@@ -1,24 +1,17 @@
-# README
+# TpIntegradorRuby
+## Dependencias
+### - [**Postgresql**](https://www.postgresql.org/)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### - Gems
 
-Things you may want to cover:
+Gem **Rails**
+    sudo gem install rails
 
-* Ruby version
+Gem **Mechanize** (Versión 2.7.5)
 
-* System dependencies
+    sudo gem install mechanize -v 2.7.5
+Gem **Nokogiri**
 
-* Configuration
+    sudo gem install nokogiri
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![Sos curioso, eh](https://c.tenor.com/p3hWK5YRo6IAAAAC/this-is-fine-dog.gif)
