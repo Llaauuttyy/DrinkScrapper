@@ -1,15 +1,19 @@
 # TpIntegradorRuby
+
 ## Dependencias
+
 ### - [**Postgresql**](https://www.postgresql.org/)
 
 ### - Gems
 
-Gem **Rails**
+  Gem **Rails**
+
     sudo gem install rails
 
 Gem **Mechanize** (Versión 2.7.5)
 
     sudo gem install mechanize -v 2.7.5
+
 Gem **Nokogiri**
 
     sudo gem install nokogiri
