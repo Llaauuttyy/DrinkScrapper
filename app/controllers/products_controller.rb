@@ -34,4 +34,9 @@ class ProductsController < ApplicationController
 
 	def invalid_product
 	end
+
+	def button
+		section_name = params["section_name"]
+		# Utilizamos el section_name para scrappear lo seleccionado por el usuario.
+	end
 end
