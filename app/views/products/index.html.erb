@@ -7,3 +7,13 @@
     <li> <a href="/candies">Golosinas</a> </li>
     <li> <a href="/cereal_bars">Barras</a> </li>
 </ul>
+
+<div class='scrap-buttons-div'>
+    <%# <div> %>
+        <%= button_to "B. Sin alcohol", "/index/bebidas_sin_alcohol", method: :post%>
+        <%= button_to "B. Con alcohol", "/index/bebidas_con_alcohol", method: :post%>
+        <%= button_to "Lacteos", "/index/lacteos", method: :post%>
+        <%= button_to "Golosinas", "/index/golosinas", method: :post%>
+        <%= button_to "Infusiones", "/index/infusiones", method: :post%>
+    <%# </div> %>
+</div>
