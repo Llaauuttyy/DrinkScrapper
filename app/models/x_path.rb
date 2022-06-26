@@ -1,0 +1,2 @@
+class XPath < ApplicationRecord
+end
