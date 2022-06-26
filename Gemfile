@@ -24,6 +24,9 @@ gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 
+# Bootstrap [https://getbootstrap.com/docs/5.2/getting-started/download/#rubygems]
+gem 'bootstrap', '~> 5.0.0-beta1'
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
