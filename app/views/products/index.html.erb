@@ -1,19 +1,11 @@
 <h1>Tienda COTO Scrapper</h1>
 
 <h2>Seleccione el producto a scrappear</h2>
-<ul>
-    <li> <a href="/drinks_without_alcohol">Bebidas sin alcohol</a> </li>
-    <li> <a href="/drinks_with_alcohol">Bebidas con alcohol</a> </li>
-    <li> <a href="/candies">Golosinas</a> </li>
-    <li> <a href="/cereal_bars">Barras</a> </li>
-</ul>
 
 <div class='scrap-buttons-div'>
-    <%# <div> %>
-        <%= button_to "B. Sin alcohol", "/index/bebidas_sin_alcohol", method: :post%>
-        <%= button_to "B. Con alcohol", "/index/bebidas_con_alcohol", method: :post%>
-        <%= button_to "Lacteos", "/index/lacteos", method: :post%>
-        <%= button_to "Golosinas", "/index/golosinas", method: :post%>
-        <%= button_to "Infusiones", "/index/infusiones", method: :post%>
-    <%# </div> %>
+        <%= button_to "B. Sin alcohol", "/bebidas_sin_alcohol" %>
+        <%= button_to "B. Con alcohol", "/bebidas_con_alcohol" %>
+        <%= button_to "Lacteos", "/lacteos" %>
+        <%= button_to "Golosinas", "/golosinas" %>
+        <%= button_to "Infusiones", "/infusiones" %>
 </div>

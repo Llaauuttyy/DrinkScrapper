@@ -2,11 +2,11 @@ class Product < ApplicationRecord
     def self.filter_by_params(params)
         product_list = Product.all
 
-        product_list = product_list.filter_by_param("name", params[:filter_name])
-        product_list = product_list.filter_by_param("category", params[:filter_category])
+        product_list = product_list.filter_by_param("name", params[:name])
+        product_list = product_list.filter_by_param("category", params[:category])
 
-        product_list = product_list.filter_between_params("price", params[:filter_min_price], params[:filter_max_price])
-        product_list = product_list.filter_between_params("size", params[:filter_min_size], params[:filter_max_size])
+        product_list = product_list.filter_between_params("price", params[:min_price], params[:max_price])
+        product_list = product_list.filter_between_params("size", params[:min_size], params[:max_size])
 
         return product_list
     end
