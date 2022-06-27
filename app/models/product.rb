@@ -1,4 +1,8 @@
 class Product < ApplicationRecord
+    def self.fill_with(section)
+        
+    end
+
     def self.filter_by_params(params)
         product_list = Product.all
 

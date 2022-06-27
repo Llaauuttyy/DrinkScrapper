@@ -1,3 +1,5 @@
+require_relative "../../lib/scrapper/SupermarketScrapper.rb"
+
 class ProductsController < ApplicationController
 	def index
 		#@product_list = Product.all
@@ -14,10 +16,12 @@ class ProductsController < ApplicationController
 
 		if !included_products.include?(section_name)
             render '/products/invalid_product'
-			return
         end
 
-		@product_list = Product.all
+		scrapper = SupermarketScrapper.new
+		url_to_scrap = Url.get_url(section_name)
+		scrapper.process_pages_from_url(url_to_scrap)
+
 		@product_list = @product_list.filter_by_params(params)
 	
 		render '/products/' + params["section_name"]

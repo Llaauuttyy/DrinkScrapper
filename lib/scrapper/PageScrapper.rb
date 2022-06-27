@@ -1,5 +1,5 @@
-require "mechanize"
 require "nokogiri"
+require "mechanize"
 
 COTO_BASE_URL = "https://www.cotodigital3.com.ar"
 NEXT_PAGE_XPATH =  "(//div[@class='pag_bottom']//a[contains(@title, 'página')][not(contains(@class, 'disabled'))])"
