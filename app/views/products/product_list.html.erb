@@ -1,5 +1,4 @@
 <%= form_with method: :get do |form| %>
-
 	<%= form.label :query, "Filter by:" %>
 	<%= form.search_field :name %>
 	<%= form.search_field :category %>
@@ -7,10 +6,9 @@
 	<%= form.number_field :max_price, in: 0..5000 %>
 	<%= form.number_field :min_size, in: 0..5000 %>
 	<%= form.number_field :max_size, in: 0..5000 %>
-
 	<%= form.submit "Filter" %>
-
 <% end %>
+
 
 <div class="content">
 <% @product_list.each do |product| %>
