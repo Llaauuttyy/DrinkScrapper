@@ -17,10 +17,10 @@ class Parser
         product_parsed['category'] = parse_category(product_hash, categories)
         product_parsed['size'] = parse_size(product_hash)
 
-        puts "#{product_parsed['name']}"
-        puts "#{product_parsed['price']}"
-        puts "#{product_parsed['category']}"
-        puts "#{product_parsed['size']}"
+        # puts "#{product_parsed['name']}"
+        # puts "#{product_parsed['price']}"
+        # puts "#{product_parsed['category']}"
+        # puts "#{product_parsed['size']}"
 
         return product_parsed
     end
@@ -60,7 +60,8 @@ class Parser
     end
 
     def parse_size(product_hash)
-        producto_split = product_hash['title'].split(' ') 
+        product_hash['title'].gsub! ',', '.'
+        producto_split = product_hash['title'].split(' ')
 
         size = 0
 
@@ -91,16 +92,3 @@ class Parser
         return name
     end
 end
-
-product_hash7 = {
-    'title' => "Te SAINT GOTTARD Naranja Canela Y Anis Est 40 Grm",
-    'price' => "$103,49",
-    'icon' => 'link'
-}
-
-categories = ['Agua', 'Agua Saborizada', 'Gaseosa','Bebida Isotónica', 'Energizante','Jugo']
-
-parser = Parser.new
-product = parser.parse(product_hash7, categories)
-
-print("#{product}\n")
