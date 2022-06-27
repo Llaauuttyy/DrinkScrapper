@@ -1,117 +1,106 @@
-require "mechanize"
-require "nokogiri"
-
-DRINKS_PAGE_1 = "https://www.cotodigital3.com.ar/sitios/cdigi/browse/catalogo-bebidas-bebidas-sin-alcohol/_/N-j9f2pv"
-mechanize = Mechanize.new
-pagina = mechanize.get(DRINKS_PAGE_1)
-precio = pagina.xpath("//span[@class='atg_store_productPrice'][not(contains(@style, 'visibility: hidden'))][1]")
-
-def parse(array,categorias)
+class Parser
     
-    def definir_categoria(hash,categorias)
-    
-        contador = 0
-        encontrado = false
-        while (contador < categorias.length && !encontrado)
-            if (hash['rawTitle'].include?(categorias[contador]))
-                encontrado = true
-            end
-            contador = contador + 1
-        end
-        return categorias[contador-1]
+    def parse(product_hash, categories)
+        product_parsed = {
+            'name' => '',
+            'photo' => '',
+            'price' => '',
+            'size' => '',
+            'category' => ''
+        }
+
+        producto_split = product_hash['title'].split(' ')
+
+        product_parsed['name'] = parse_name(producto_split)
+        product_parsed['photo'] = product_hash['icon']
+        product_parsed['price'] = parse_price(product_hash)
+        product_parsed['category'] = parse_category(product_hash, categories)
+        product_parsed['size'] = parse_size(product_hash)
+
+        puts "#{product_parsed['name']}"
+        puts "#{product_parsed['price']}"
+        puts "#{product_parsed['category']}"
+        puts "#{product_parsed['size']}"
+
+        return product_parsed
     end
 
-    product_parsed = {
-        'nombre' => '',
-        'foto' => '',
-        'precio' => '',
-        'cantidad' => '',
-        'categoria' => ''
-        # 'descuento' => ''
-    }
-    array.each do |hash|
-        product_parsed['categoria'] = definir_categoria(hash,categorias)
-        product_parsed['foto'] = hash['rawIcon']
-        product_parsed['nombre'] = ''
+    def parse_category(product_hash, categories)
+        counter = 0
+        found = false
 
-    # def parse_price
-        price_parsed = hash['rawPrice'].split('$') #price_to_parse.split('$')
+        while (counter < categories.length && !found)
+            if (product_hash['title'].include?(categories[counter]))
+                found = true
+            end
+            counter = counter + 1
+        end
+
+        return categories[counter-1]
+    end
+
+    def parse_price(product_hash)
+        price_parsed = product_hash['price'].split('$')
+
         price_parsed = price_parsed[1].split(' ')
         price_parsed = price_parsed[0].split(',')
+
         price_parsed[0] = price_parsed[0].to_i
         price_parsed[1] = price_parsed[1].to_i
-        if price_parsed[1] > 50
-            product_parsed['precio'] = ((price_parsed[0]).to_i + 1).to_s
+
+        price = 0
+
+        if price_parsed[1] >= 50
+            price = ((price_parsed[0]).to_i + 1).to_s
         else
-            product_parsed['precio'] = ((price_parsed[0]).to_i).to_s
+            price = ((price_parsed[0]).to_i).to_s
         end
-    # end
-    
-    # def parse_quantity
-        producto_split = hash['rawTitle'].split(' ') 
+
+        return price
+    end
+
+    def parse_size(product_hash)
+        producto_split = product_hash['title'].split(' ') 
+
+        size = 0
 
         if (producto_split.include?('Grm'))
-            product_parsed['cantidad'] = producto_split[producto_split.length-2] + 'Gr'
+            size = producto_split[producto_split.length - 2] + 'Gr'
         else
-            cantidad_to_compare = (producto_split[producto_split.length-2]).to_f
+            cantidad_to_compare = (producto_split[producto_split.length - 2]).to_f
             if cantidad_to_compare > 7
-                product_parsed['cantidad'] = ((cantidad_to_compare / 1000).to_s) + 'L'
+                size = ((cantidad_to_compare / 1000).to_s) + 'L'
             else
-                product_parsed['cantidad'] = (cantidad_to_compare).to_s + 'L'
+                size = (cantidad_to_compare).to_s + 'L'
             end
         end
-    # end
+    end
 
-    # def parse_name
+    def parse_name(producto_split)
         producto_split.delete_at((producto_split.length) -2)
         producto_split.delete_at((producto_split.length) -1)
-        producto_split.each do |element|
-            product_parsed['nombre'] = product_parsed['nombre'] + element + ' '
+
+        name = ''
+
+        producto_split.each do 
+            |element|
+
+            name = name + element + ' '
         end
-    # end
-        puts product_parsed
+
+        return name
     end
 end
 
-product_hash1 = {
-    'rawTitle' => "Agua Mineralizada Artificialmente Cellier 500 L",
-    'rawPrice' => precio[0].text,
-    'rawIcon' => 'link'
-}
-product_hash2 = {
-    'rawTitle' => "Energizante SPEED UNLIMITED 250 Cc", #Pack X 4 Unidades 250 Cc",
-    'rawPrice' => precio[0].text,
-    'rawIcon' => 'link'
-}
-product_hash3 = {
-    'rawTitle' => "Chocolate Con Leche Y Almendras Vizzio Pot 165 Grm",
-    'rawPrice' => precio[0].text,
-    'rawIcon' => 'link'
-}
-product_hash4 = {
-    'rawTitle' => "Te Frutos Del Bosque SAINT GOTTARD Caja 20 Saquitos",
-    'rawPrice' => precio[0].text,
-    'rawIcon' => 'link'
-}
-product_hash5 = {
-    'rawTitle' => "Yerba Mate Hierbas Serranas Salus Paq 500 Grm",
-    'rawPrice' => precio[0].text,
-    'rawIcon' => 'link'
-}
-product_hash6 = {
-    'rawTitle' => "Yerba Mate C/Hierb Aromaticas Cachamate Paq 1 Kgm",
-    'rawPrice' => precio[0].text,
-    'rawIcon' => 'link'
-}
 product_hash7 = {
-    'rawTitle' => "Te SAINT GOTTARD Naranja Canela Y Anis Est 40 Grm",
-    'rawPrice' => precio[0].text,
-    'rawIcon' => 'link'
+    'title' => "Te SAINT GOTTARD Naranja Canela Y Anis Est 40 Grm",
+    'price' => "$103,49",
+    'icon' => 'link'
 }
 
-array_product_to_be_filtered = [product_hash1,product_hash2,product_hash3,product_hash4,product_hash5,product_hash6,product_hash7]
-categorias = ['Agua', 'Agua Saborizada', 'Gaseosa','Bebida Isotónica', 'Energizante','Jugo','Chicles','Chocolate','Gomitas','Alfajor','Caramelos','Te','Cafe','Mate Cocido','Yerba']
+categories = ['Agua', 'Agua Saborizada', 'Gaseosa','Bebida Isotónica', 'Energizante','Jugo']
 
-filter_producto = Producto_terminado.new
-array = filter_producto.filter_product(array_product_to_be_filtered, categorias) #POR PARAMETRO SOLAMENTE PASO DE A UN PRODUCTO A LA VEZ
-parse(array,categorias)
+parser = Parser.new
+product = parser.parse(product_hash7, categories)
+
+print("#{product}\n")
