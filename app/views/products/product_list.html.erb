@@ -1,14 +1,24 @@
 <%= form_with method: :get do |form| %>
-	<%= form.label :query, "Filter by:" %>
-	<%= form.search_field :name %>
+	<%= form.label :query, "Filtros" %>
+	<br>
+	<%= form.label :query, "Nombre: " %>
+	<%= form.search_field :name, :type=>"input" %>
+	<br>
+	<%= form.label :query, "Categoria: " %>
 	<%= form.search_field :category %>
+	<br>
+	<%= form.label :query, "Precio minimo: " %>
 	<%= form.number_field :min_price, in: 0..5000 %>
+	<%= form.label :query, "Precio maximo: " %>
 	<%= form.number_field :max_price, in: 0..5000 %>
+	<br>
+	<%= form.label :query, "Tamaño minimo: " %>
 	<%= form.number_field :min_size, in: 0..5000 %>
+	<%= form.label :query, "Tamaño maximo: " %>
 	<%= form.number_field :max_size, in: 0..5000 %>
-	<%= form.submit "Filter" %>
+	<br>
+	<%= form.submit "Filtrar" %>
 <% end %>
-
 
 <div class="content">
 <% @product_list.each do |product| %>
