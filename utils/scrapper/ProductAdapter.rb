@@ -2,9 +2,6 @@ require_relative "parser.rb"
 require_relative "productFilter.rb"
 
 class ProductAdapter
-    def initialize()
-    end
-
     def to_products(data_to_adapt)
         products_to_adapt = set_data(data_to_adapt)
 
