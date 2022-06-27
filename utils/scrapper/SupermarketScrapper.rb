@@ -27,7 +27,9 @@ class SupermarketScrapper
         page_counter = 1
     
         while page_counter <= MAX_PAGES_TO_SCRAP
-            # products_array = process_page(page_to_scrap)
+            products_array = process_page(page_to_scrap)
+
+            print(products_array)
 
             # Almacenamos en la base
 

@@ -11,14 +11,14 @@ class ProductsScrapper
 
     # Unificar en 1
     def scrap_titles(page_to_scrap)
-        titles = page_to_scrap.xpath(TITLES_XPATH).text
+        titles = page_to_scrap.xpath(TITLES_XPATH)
     end
 
     def scrap_prices(page_to_scrap)
-        prices = page_to_scrap.xpath(PRICES_XPATH).text
+        prices = page_to_scrap.xpath(PRICES_XPATH)
     end
 
     def scrap_icons(page_to_scrap)
-        icons = page_to_scrap.xpath(ICONS_XPATH).text
+        icons = page_to_scrap.xpath(ICONS_XPATH)
     end
 end
