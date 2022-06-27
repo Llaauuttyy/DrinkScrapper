@@ -1,5 +1,5 @@
-require_relative "parser.rb"
-require_relative "productFilter.rb"
+require_relative "../parser/parser.rb"
+require_relative "../parser/productFilter.rb"
 
 class ProductAdapter
     def to_products(data_to_adapt)
