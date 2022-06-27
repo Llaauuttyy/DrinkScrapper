@@ -1,2 +1,0 @@
-class URLs < ApplicationRecord
-end
