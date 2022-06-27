@@ -103,3 +103,7 @@ button:focus {
     color: red;
     transition: 1s;
 }
+
+ul {
+    list-style: none;
+}
