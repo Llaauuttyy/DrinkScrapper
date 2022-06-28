@@ -25,10 +25,10 @@
 	<article class="product">
 		<%= image_tag(product.img_link, :class => "product_image", :alt => product.name) %>
         <div>
-            <h2 class="product_name"><%= product.name %></h2>
-            <h3 class="product_info"><%= product.category %></h3>
-            <h3 class="product_info"><%= product.price %></h3>
-            <h3 class="product_info"><%= product.size %></h3>
+            <h3 class="product_name"><%= product.name %></h3>
+            <h5 class="product_info"><%= product.category %></h5>
+            <h5 class="product_info">Precio: $<%= product.price %></h5>
+            <h5 class="product_info">Tamaño: <%= product.size %></h5>
         </div>
     </article>
 <% end %>

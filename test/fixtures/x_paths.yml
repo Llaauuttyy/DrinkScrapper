@@ -2,10 +2,10 @@
 
 one:
   section: MyString
-  attribute: MyString
+  section_attribute: MyString
   xpath: MyString
 
 two:
   section: MyString
-  attribute: MyString
+  section_attribute: MyString
   xpath: MyString

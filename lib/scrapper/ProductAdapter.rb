@@ -2,10 +2,8 @@ require_relative "../parser/parser.rb"
 require_relative "../parser/productFilter.rb"
 
 class ProductAdapter
-    def to_products(data_to_adapt)
+    def to_products(data_to_adapt, categories)
         products_to_adapt = set_data(data_to_adapt)
-
-        categories = ['Agua', 'Agua Saborizada', 'Gaseosa','Bebida Isotónica', 'Energizante','Jugo']
 
         # Llama al filter para filtrar a los no deseados (le pasa array).
 

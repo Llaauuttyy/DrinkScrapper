@@ -1,6 +1,6 @@
 class ProductFilter
 
-    def is_category_wanted(product_hash,categories)
+    def is_category_wanted(product_hash, categories)
         
         counter = 0
         found = false
