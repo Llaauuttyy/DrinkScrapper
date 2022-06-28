@@ -25,11 +25,12 @@ class SupermarketScrapper
         page_to_scrap = @page_scrapper.start_page(page_url)
 
         page_counter = 1
-    
+        
+
         while page_counter <= MAX_PAGES_TO_SCRAP
             products_array = process_page(page_to_scrap)
-
-            print(products_array)
+            
+            puts "HOLA: #{products_array}"
 
             # Almacenamos en la base
 
