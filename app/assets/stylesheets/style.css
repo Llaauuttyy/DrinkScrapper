@@ -29,13 +29,38 @@ body {
     height: 10rem;
 }
 
+label {
+    color:rgb(243, 167, 167);
+    text-align: center;
+}
+
+.product_section {
+    color: #bd3cd6;
+    font-size: 50px;
+}
+
+.container-fluid {
+    justify-content: center !important;
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 .product {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 14rem;
-    height: 20rem;
+    width: 15rem;
+    height: 22rem;
+
+    max-width: 16rem;
+    min-height: 22rem;
+
     border-radius: 10pt;
     background: white;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
@@ -64,7 +89,7 @@ body {
     align-items: center;
     width: 100%;
     margin-bottom: 20px;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     flex-wrap: wrap;
 }
 

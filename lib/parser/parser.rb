@@ -2,6 +2,7 @@ class Parser
     
     def parse(product_hash, categories)
         product_parsed = {
+            'plu' => '',
             'name' => '',
             'photo' => '',
             'price' => '',
@@ -10,6 +11,9 @@ class Parser
         }
 
         producto_split = product_hash['title'].split(' ')
+
+        # ESTO SE VA A PARSEAR ACA LUEGO!!!
+        product_parsed['plu'] = product_hash['plu']
 
         product_parsed['name'] = parse_name(producto_split)
         product_parsed['photo'] = product_hash['icon']

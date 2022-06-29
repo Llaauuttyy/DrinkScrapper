@@ -1,0 +1,18 @@
+<h1>REVIEWS DE PRODUCTOS</h1>
+
+<%# <p>Find me in app/views/reviews/index.html.erb</p> %>
+
+<div class="reviews">
+
+<%= form_with method: :post do |form| %>
+	<%= form.label :query, "Escribe tu review!" %>
+	<br>
+	<%= form.label :query, "Nombre: " %>
+	<%= form.text_field :name, :type=>"input" %>
+	<br>
+	<%= form.label :query, "Review: " %>
+	<%= form.text_field :review %>
+
+	<%= form.submit "Enviar" %>
+<% end %>
+</div>

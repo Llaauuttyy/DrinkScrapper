@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
     def self.fill_with(section)
-        
+
     end
 
     def self.filter_by_params(params)
@@ -16,10 +16,10 @@ class Product < ApplicationRecord
     end
 
     def self.filter_by_param(query_param, param)
-        string_query = "lower(" + query_param + ") = ?"
+        string_query = "lower(" + query_param + ") LIKE ?"
 
         if param.present?
-            return self.where(string_query, param.downcase)
+            return self.where(string_query, "%#{param.downcase}%")
         end
 
         return self.all

@@ -1,5 +1,9 @@
 require_relative "../../lib/scrapper/SupermarketScrapper.rb"
 
+PRICES_XPATH = "//span[@class='atg_store_productPrice'][not(contains(@style, 'visibility: hidden'))] | //div[@class='first_price_discount_container']/span[@class='price_discount']"
+TITLES_XPATH = "//div[@class='descrip_full']"
+ICONS_XPATH = "//span[@class='atg_store_productImage']/img"
+
 URLS_ARRAY = [
 	["bebidas_con_alcohol", "https://www.cotodigital3.com.ar/sitios/cdigi/browse/catalogo-bebidas-bebidas-con-alcohol/_/N-4hulsc"],
 	["bebidas_sin_alcohol", "https://www.cotodigital3.com.ar/sitios/cdigi/browse/catalogo-bebidas-bebidas-sin-alcohol/_/N-j9f2pv"],
@@ -55,8 +59,6 @@ FILTER_CATEGORIES = [
 
 class ProductsController < ApplicationController
 	def index
-		@already_scrapped = false
-
 		Product.delete_all
 		Url.delete_all
 		XPath.delete_all
@@ -92,25 +94,29 @@ class ProductsController < ApplicationController
             render '/products/invalid_product'
         end
 
-		if !@already_scrapped
-			categories = Category.get_filter_categories(section_name)
-			xpaths = XPath.get_xpaths(section_name)
+		categories = Category.get_filter_categories(section_name)
+		xpaths = XPath.get_xpaths(section_name)
 
-			info_hash = {
-				'categories' => categories,
-				'xpaths' => xpaths
-			}
+		info_hash = {
+			'categories' => categories,
+			'xpaths' => xpaths
+		}
 
-			url_to_scrap = Url.get_url(section_name)
+		url_to_scrap = Url.get_url(section_name)
 
-			scrapper = SupermarketScrapper.new
-			scrapper.process_pages_from_url(url_to_scrap, info_hash)
+		scrapper = SupermarketScrapper.new
+		scrapper.process_pages_from_url(url_to_scrap, info_hash)
 
-			@product_list = Product.all
-			@product_list = @product_list.filter_by_params(params)
+		@product_list = Product.all
+		# @product_list = @product_list.filter_by_params(params)
 
-			@already_scrapped = true
-		end
+
+		render '/products/' + params["section_name"]
+	end
+
+	def filter_button
+		@product_list = Product.all
+		@product_list = @product_list.filter_by_params(params)
 
 		render '/products/' + params["section_name"]
 	end

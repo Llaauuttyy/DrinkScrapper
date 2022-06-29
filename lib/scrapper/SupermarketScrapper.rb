@@ -34,7 +34,7 @@ class SupermarketScrapper
 
             products_array.each {
                 |product|
-                Product.new(name: product['name'], category: product['category'], img_link: product['photo'], price: product['price'], size: product['size']).save
+                Product.new(plu: product['plu'], name: product['name'], category: product['category'], img_link: product['photo'], price: product['price'], size: product['size']).save
             }
 
             page_counter += 1

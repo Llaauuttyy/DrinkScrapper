@@ -29,15 +29,20 @@ class ProductAdapter
     def set_data(data_to_adapt)
         products_to_adapt = []
 
-        products_data_array = data_to_adapt[0].zip(data_to_adapt[1], data_to_adapt[2])
+        products_data_array = data_to_adapt[0].zip(data_to_adapt[1], data_to_adapt[2], data_to_adapt[3])
 
         products_data_array.each {
             |product_data|
 
+            # AGREGAR EN EL PARSER!!!
+            plu = product_data[3].text.gsub "(", ""
+            plu = plu.gsub ")", ""
+
             product_to_adapt = {
                 "title" => product_data[0].text,
                 "price" => product_data[1].text,
-                "icon" => product_data[2]['src']
+                "icon" => product_data[2]['src'],
+                "plu" => plu
             }
 
             products_to_adapt << product_to_adapt 
