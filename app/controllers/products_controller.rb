@@ -120,4 +120,14 @@ class ProductsController < ApplicationController
 
 		render '/products/' + params["section_name"]
 	end
+
+	def like
+		puts "I like it"
+	end
+
+	def like_product
+		puts params
+		puts "Likeando producto con PLU: #{params[:plu]}"
+		Like.update_likes(params)
+	end
 end

@@ -1,3 +1,6 @@
+<%= stylesheet_link_tag "style.css", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "products.css", "data-turbo-track": "reload" %>
+
 <div class="filters">
 <%= form_with method: :get do |form| %>
 	<%= form.label :query, "Filtros" %>
@@ -28,7 +31,8 @@
 		<%= image_tag(product.img_link, :class => "product_image", :alt => product.name) %>
         <div>
             <h4 class="product_name"><b><%= product.name %></b></h4>
-            <h5 class="product_info"><%= product.category %></h5>
+            <h5 class="product_info"><%= product.category %></h5> 
+			<div class="like_button"> <%= button_to "❤️", "/#{params[:section_name]}/#{product.plu}/#{product.category}"%> </div>
             <h6 class="product_info">Precio: $<%= product.price %></h6>
             <h6 class="product_info">Tamaño: <%= product.size %></h6>
 			<h6 class="product_info">PLU: <%= product.plu %></h6>

@@ -1,18 +1,26 @@
+<%= stylesheet_link_tag "style.css", "data-turbo-track": "reload" %>
+
 <h1>REVIEWS DE PRODUCTOS</h1>
 
-<%# <p>Find me in app/views/reviews/index.html.erb</p> %>
-
 <div class="reviews">
+	<span> REVIEWS </span>
+	<% ReviewsController.get_reviews(params[:plu]).each do |review| %>
+		<div>
+			<p> <%= "#{review.reviewer_name}: #{review.review}" %> </p> 
+		</div>
+	<% end %>
+</div>
 
-<%= form_with method: :post do |form| %>
-	<%= form.label :query, "Escribe tu review!" %>
-	<br>
-	<%= form.label :query, "Nombre: " %>
-	<%= form.text_field :name, :type=>"input" %>
-	<br>
-	<%= form.label :query, "Review: " %>
-	<%= form.text_field :review %>
+<div class="new_review">
+	<%= form_with method: :post do |form| %>
+		<%= form.label :query, "Escribe tu review!" %>
+		<br>
+		<%= form.label :query, "Nombre: " %>
+		<%= form.text_field :name, :type=>"input" %>
+		<br>
+		<%= form.label :query, "Review: " %>
+		<%= form.text_field :review %>
 
-	<%= form.submit "Enviar" %>
-<% end %>
+		<%= form.submit "Enviar" %>
+	<% end %>
 </div>
