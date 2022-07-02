@@ -1,0 +1,22 @@
+<%= stylesheet_link_tag "style.css", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "products.css", "data-turbo-track": "reload" %>
+
+<h1>Tus productos ¡<b>Favoritos</b>!</h1>
+
+<div class="content">
+<% StarsController.get_stars.each do |star| %>
+	<article class="product">
+		<%= image_tag(star.img_link, :class => "product_image", :alt => star.name) %>
+        <div>
+            <h4 class="product_name"><b><%= star.name %></b></h4>
+            <h5 class="product_info"><%= star.category %></h5> 
+            <div class="delete-button"> <%= button_to "❌", "/stars/index/#{star.id}", method: :delete%> </div>
+			<div class="like_button"> <%= button_to "❤️", ""%> </div>
+			<span class="like_counter"> <%= star.likes %> </span>
+            <h6 class="product_info">Precio: $<%= star.price %></h6>
+            <h6 class="product_info">Tamaño: <%= star.size %></h6>
+			<h6 class="product_info">PLU: <%= star.plu %></h6>
+			<%= button_to "Review", "/reviews/index/#{star.plu}", method: :get%>
+        </div>
+    </article>
+<% end %>

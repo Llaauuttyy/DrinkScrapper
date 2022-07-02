@@ -6,7 +6,8 @@
 	<span> REVIEWS </span>
 	<% ReviewsController.get_reviews(params[:plu]).each do |review| %>
 		<div>
-			<p> <%= "#{review.reviewer_name}: #{review.review}" %> </p> 
+			<p> <%= "#{review.reviewer_name}: #{review.review}" %> </p>
+			<div class="delete-button"> <%= button_to "❌", "/reviews/index/#{review.plu}/#{review.id}", method: :delete%> </div>
 		</div>
 	<% end %>
 </div>

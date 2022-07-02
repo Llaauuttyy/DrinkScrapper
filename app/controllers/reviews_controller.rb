@@ -10,16 +10,19 @@ class ReviewsController < ApplicationController
   end
 
   def upload
-    #Cargo la review en la base.
+    # Cargo la review en la base.
     Review.new(plu: params["plu"], review: params["review"], reviewer_name: params["name"]).save
+
+    # Renderizo la view para observar cambios.
+    render "/reviews/index"
   end
 
-  def prueba
-    puts "ASASDDS"
-  end
+  def delete
+    puts params
 
-  def prueba1
-    puts "asdasdasdaAAAAAAAAAAAAA"
+    Review.delete(params[:id])
+
+    redirect_to "/reviews/index/#{params[:plu]}"
   end
 end
 

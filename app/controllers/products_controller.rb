@@ -85,6 +85,8 @@ class ProductsController < ApplicationController
 	end
 
 	def button
+		Product.delete_all
+
 		section_name = params["section_name"]
 		# Utilizamos el section_name para scrappear lo seleccionado por el usuario.
 
@@ -108,8 +110,9 @@ class ProductsController < ApplicationController
 		scrapper.process_pages_from_url(url_to_scrap, info_hash)
 
 		@product_list = Product.all
+		@product_list = @product_list.order_by_likes(@product_list)
 		# @product_list = @product_list.filter_by_params(params)
-
+		puts "AQUI AQUI ESTAMOS #{params}"
 
 		render '/products/' + params["section_name"]
 	end
@@ -117,17 +120,33 @@ class ProductsController < ApplicationController
 	def filter_button
 		@product_list = Product.all
 		@product_list = @product_list.filter_by_params(params)
+		@product_list = @product_list.order_by_likes(@product_list)
 
 		render '/products/' + params["section_name"]
-	end
-
-	def like
-		puts "I like it"
 	end
 
 	def like_product
 		puts params
 		puts "Likeando producto con PLU: #{params[:plu]}"
+		puts "Likeando producto con TOKEN: #{params[:authenticity_token]}"
+
 		Like.update_likes(params)
+
+		@product_list = Product.all
+		@product_list = @product_list.order_by_likes(@product_list)
+
+		# Redirecciona sin tener el cuenta los params, el render los tiene en cuenta.
+		redirect_to "/#{params["section_name"]}"
+	end
+
+	def star_product
+		Star.add_product(params[:plu])
+
+		@product_list = Product.all
+		@product_list = @product_list.order_by_likes(@product_list)
+
+		redirect_to "/#{params["section_name"]}"
+
+		puts "ES MI FAVORITOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
 	end
 end

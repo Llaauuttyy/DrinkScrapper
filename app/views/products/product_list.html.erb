@@ -25,6 +25,8 @@
 <% end %>
 </div>
 
+<div> <%= button_to "⭐ Starred Products ⭐", "/stars/index", method: :get %> </div>
+
 <div class="content">
 <% @product_list.each do |product| %>
 	<article class="product">
@@ -32,7 +34,9 @@
         <div>
             <h4 class="product_name"><b><%= product.name %></b></h4>
             <h5 class="product_info"><%= product.category %></h5> 
+			<div class="favorite_button"> <%= button_to "⭐", "/#{params[:section_name]}/#{product.plu}/#{product.category}", method: :get %></div>
 			<div class="like_button"> <%= button_to "❤️", "/#{params[:section_name]}/#{product.plu}/#{product.category}"%> </div>
+			<span class="like_counter"> <%= product.likes %> </span>
             <h6 class="product_info">Precio: $<%= product.price %></h6>
             <h6 class="product_info">Tamaño: <%= product.size %></h6>
 			<h6 class="product_info">PLU: <%= product.plu %></h6>
