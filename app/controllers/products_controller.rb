@@ -59,10 +59,10 @@ FILTER_CATEGORIES = [
 
 class ProductsController < ApplicationController
 	def index
-		Product.delete_all
-		Url.delete_all
-		XPath.delete_all
-		Category.delete_all
+		Product.erase_all
+		Url.erase_all
+		XPath.erase_all
+		Category.erase_all
 
 		URLS_ARRAY.each {
 			|url_row|
@@ -85,7 +85,7 @@ class ProductsController < ApplicationController
 	end
 
 	def button
-		Product.delete_all
+		Product.erase_all
 
 		section_name = params["section_name"]
 		# Utilizamos el section_name para scrappear lo seleccionado por el usuario.
@@ -111,9 +111,8 @@ class ProductsController < ApplicationController
 
 		@product_list = Product.all
 		@product_list = @product_list.order_by_likes(@product_list)
-		# @product_list = @product_list.filter_by_params(params)
-		puts "AQUI AQUI ESTAMOS #{params}"
 
+		# redirect_to "/errors/index"
 		render '/products/' + params["section_name"]
 	end
 
@@ -126,10 +125,6 @@ class ProductsController < ApplicationController
 	end
 
 	def like_product
-		puts params
-		puts "Likeando producto con PLU: #{params[:plu]}"
-		puts "Likeando producto con TOKEN: #{params[:authenticity_token]}"
-
 		Like.update_likes(params)
 
 		@product_list = Product.all
@@ -146,7 +141,10 @@ class ProductsController < ApplicationController
 		@product_list = @product_list.order_by_likes(@product_list)
 
 		redirect_to "/#{params["section_name"]}"
-
-		puts "ES MI FAVORITOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
 	end
+
+	def show_error_page
+        # redirect_to "/layouts/scrapping_error"
+        
+    end
 end

@@ -28,9 +28,6 @@ class SupermarketScrapper
 
         while page_counter <= MAX_PAGES_TO_SCRAP
             products_array = process_page(page_to_scrap, info_hash)
-            
-            puts "HOLA: #{products_array}"
-
 
             products_array.each {
                 |product|
