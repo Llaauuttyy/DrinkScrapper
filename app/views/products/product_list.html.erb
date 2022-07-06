@@ -2,32 +2,29 @@
 <%= stylesheet_link_tag "style"%>
 <%= stylesheet_link_tag "products"%>
 
-<div class="filters">
-<%= form_with method: :get do |form| %>
-	<div class="filter-sign">
-		Filtros
-	</div>
-	<br>
-	<%= form.label :query, "Nombre " %>
-	<%= form.search_field :name, :type=>"input" %>
-	<br>
-	<%= form.label :query, "Categoria " %>
-	<%= form.search_field :category %>
-	<br>
-	<%= form.label :query, "Precio minimo " %>
-	<%= form.number_field :min_price, in: 0..5000 %>
-	<br>
-	<%= form.label :query, "Precio maximo " %>
-	<%= form.number_field :max_price, in: 0..5000 %>
-	<br>
-	<%= form.label :query, "Tamaño minimo " %>
-	<%= form.number_field :min_size, in: 0..5000 %>
-	<br>
-	<%= form.label :query, "Tamaño maximo " %>
-	<%= form.number_field :max_size, in: 0..5000 %>
-	<br>
-	<%= form.submit "Filtrar" %>
-<% end %>
+<div class="filters_products">
+	<%= form_with method: :get do |form| %>
+		<%= form.label :query, "Filtros" %>
+		<br>
+		<%= form.label :query, "Nombre: " %>
+		<%= form.search_field :name, :type=>"input" %>
+		<br>
+		<%= form.label :query, "Categoria: " %>
+		<%= form.search_field :category %>
+		<br>
+		<%= form.label :query, "Precio minimo: " %>
+		<%= form.number_field :min_price, in: 0..5000 %>
+		<%= form.label :query, "Precio maximo: " %>
+		<%= form.number_field :max_price, in: 0..5000 %>
+		<br>
+		<%= form.label :query, "Tamaño minimo: " %>
+		<%= form.number_field :min_size, in: 0..5000 %>
+		<%= form.label :query, "Tamaño maximo: " %>
+		<%= form.number_field :max_size, in: 0..5000 %>
+		<br>
+		<br>
+		<%= form.submit "Filtrar" %>
+	<% end %>
 </div>
 
 <div class="star-button"> <%= button_to "⭐ Starred Products ⭐", "/stars/index", method: :get %> </div>
@@ -44,8 +41,9 @@
 			<span class="like_counter"> <%= product.likes %> </span>
             <h6 class="product_info">Precio: $<%= product.price %></h6>
             <h6 class="product_info">Tamaño: <%= product.size %></h6>
-			<%# <h6 class="product_info">PLU: <%= product.plu %>
-			<%= button_to "Review", "/reviews/index/#{product.plu}", method: :get%>
+
+			<%# <h6 class="product_info">PLU: <%= product.plu %>  <%#</h6>  %>
+			<div class="review_button"> <%= button_to "Review", "/reviews/index/#{product.plu}", method: :get%></div>
         </div>
     </article>
 <% end %>

@@ -1,22 +1,26 @@
 .product {
-    display: flex;
-    flex-direction: column;
+    display: outside;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
+    font-size: 16px;
     width: 15rem;
-    height: 22rem;
+    height: 25rem;
 
     background-color: #853974;
 
     max-width: 16rem;
-    min-height: 22rem;
+    min-height: 31rem;
 
-    border-radius: 10pt;
-    background: white;
+    
+    background: #0b041b;
+    color: white;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
     -moz-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
     -o-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
-    -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+    -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9); 
+    
+
     text-align: center;
     -moz-transition: 0.5s ease;
     -webkit-transition: 0.5s ease;
@@ -28,8 +32,8 @@
     flex: 1 1 auto;
     flex-shrink: 0;
     border-style: solid;
-    border-color: #b5b5b5;
-    border-width: 1px;
+    border-color: #5878ca;
+    border-width: 5px;
     padding: 1rem 1rem
 }
 

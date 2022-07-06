@@ -1,16 +1,6 @@
-<%= stylesheet_link_tag "style.css", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "reviews.css", "data-turbo-track": "reload" %>
 
 <h1>REVIEWS DE PRODUCTOS</h1>
-
-<div class="reviews">
-	<span> REVIEWS </span>
-	<% ReviewsController.get_reviews(params[:plu]).each do |review| %>
-		<div>
-			<p> <%= "#{review.reviewer_name}: #{review.review}" %> </p>
-			<div class="delete-button"> <%= button_to "❌", "/reviews/index/#{review.plu}/#{review.id}", method: :delete%> </div>
-		</div>
-	<% end %>
-</div>
 
 <div class="new_review">
 	<%= form_with method: :post do |form| %>
@@ -19,9 +9,25 @@
 		<%= form.label :query, "Nombre: " %>
 		<%= form.text_field :name, :type=>"input" %>
 		<br>
-		<%= form.label :query, "Review: " %>
+		<%= form.label :query, "Review:  " %>
 		<%= form.text_field :review %>
-
+		<br>
+		<br>
 		<%= form.submit "Enviar" %>
+	<% end %>
+</div>
+
+<div class="reviews">
+	<h2> REVIEWS </h2>
+	<% ReviewsController.get_reviews(params[:plu]).each do |review| %>
+		<div>
+			<article class= "review">
+				<h2> <%= "#{review.reviewer_name}" %> </h2>
+				<p> <%= "#{review.review}" %> </p>
+			<div class="delete-button"> 
+				<%= button_to "❌", "/reviews/index/#{review.plu}/#{review.id}", method: :delete %> 
+			</div>
+			</article>
+		</div>
 	<% end %>
 </div>
