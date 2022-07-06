@@ -7,6 +7,8 @@
     width: 15rem;
     height: 25rem;
 
+    background-color: #853974;
+
     max-width: 16rem;
     min-height: 31rem;
 
@@ -51,7 +53,21 @@
     margin: 0;
 }
 
-button {
-    background-color: transparent;
-    border: none;
+.filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: rgb(98,3,117);
+    background: linear-gradient(0deg, rgba(98,3,117,1) 0%, rgba(0,0,0,1) 100%);
+}
+
+.star-button {
+    position: absolute;
+    top: 45%;
+}
+
+.filter-sign {
+    color: white;
+    font-size: 30px;
 }

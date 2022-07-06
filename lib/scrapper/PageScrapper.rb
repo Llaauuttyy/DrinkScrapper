@@ -10,9 +10,7 @@ class PageScrapper
     end
 
     def start_page(page_url)
-        # begin
         page = @mechanize.get(page_url)
-        # rescue
     end
 
     def get_next_page(page_get_next, next_page_number)

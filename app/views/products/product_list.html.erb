@@ -1,5 +1,6 @@
-<%= stylesheet_link_tag "style.css", "data-turbo-track": "reload" %>
-<%= stylesheet_link_tag "products.css", "data-turbo-track": "reload" %>
+<%# <%= stylesheet_link_tag "application"%>
+<%= stylesheet_link_tag "style"%>
+<%= stylesheet_link_tag "products"%>
 
 <div class="filters_products">
 	<%= form_with method: :get do |form| %>
@@ -26,7 +27,7 @@
 	<% end %>
 </div>
 
-<div> <%= button_to "⭐ Starred Products ⭐", "/stars/index", method: :get %> </div>
+<div class="star-button"> <%= button_to "⭐ Starred Products ⭐", "/stars/index", method: :get %> </div>
 
 <div class="content">
 <% @product_list.each do |product| %>
@@ -40,6 +41,7 @@
 			<span class="like_counter"> <%= product.likes %> </span>
             <h6 class="product_info">Precio: $<%= product.price %></h6>
             <h6 class="product_info">Tamaño: <%= product.size %></h6>
+
 			<%# <h6 class="product_info">PLU: <%= product.plu %>  <%#</h6>  %>
 			<div class="review_button"> <%= button_to "Review", "/reviews/index/#{product.plu}", method: :get%></div>
         </div>

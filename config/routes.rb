@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'errors/index'
   get 'stars/index'
   delete 'stars/index/:id', to: 'stars#delete'
 
