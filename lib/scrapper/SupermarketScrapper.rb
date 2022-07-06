@@ -2,7 +2,7 @@ require_relative "PageScrapper.rb"
 require_relative "ProductsScrapper.rb"
 require_relative "ProductAdapter.rb"
 
-MAX_PAGES_TO_SCRAP = 3
+MAX_PAGES_TO_SCRAP = 1
 
 class SupermarketScrapper
     # Se encarga de controlar el flujo de scrapping de las paginas y los productos.
@@ -28,9 +28,6 @@ class SupermarketScrapper
 
         while page_counter <= MAX_PAGES_TO_SCRAP
             products_array = process_page(page_to_scrap, info_hash)
-            
-            puts "HOLA: #{products_array}"
-
 
             products_array.each {
                 |product|
