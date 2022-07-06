@@ -11,12 +11,6 @@ class PageScrapper
 
     def start_page(page_url)
         page = @mechanize.get(page_url)
-        # ProductsController.new.show_error_page
-        # begin
-        #     page = @mechanize.get(page_url)
-        # rescue
-        #     ProductsController.new.show_error_page
-        # end
     end
 
     def get_next_page(page_get_next, next_page_number)

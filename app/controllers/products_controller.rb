@@ -106,13 +106,20 @@ class ProductsController < ApplicationController
 
 		url_to_scrap = Url.get_url(section_name)
 
+		# begin
+		# 	scrapper = SupermarketScrapper.new
+		# 	scrapper.process_pages_from_url(url_to_scrap, info_hash)
+		# 	@product_list = Product.all
+		# 	@product_list = @product_list.order_by_likes(@product_list)
+		# 	render '/products/' + params["section_name"]
+		# rescue
+		# 	redirect_to "/errors/index"
+		# end
+
 		scrapper = SupermarketScrapper.new
 		scrapper.process_pages_from_url(url_to_scrap, info_hash)
-
 		@product_list = Product.all
 		@product_list = @product_list.order_by_likes(@product_list)
-
-		# redirect_to "/errors/index"
 		render '/products/' + params["section_name"]
 	end
 
@@ -144,7 +151,7 @@ class ProductsController < ApplicationController
 	end
 
 	def show_error_page
-        # redirect_to "/layouts/scrapping_error"
+        redirect_to "/errors/index"
         
     end
 end
