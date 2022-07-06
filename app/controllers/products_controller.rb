@@ -59,10 +59,10 @@ FILTER_CATEGORIES = [
 
 class ProductsController < ApplicationController
 	def index
-		Product.delete_all
-		Url.delete_all
-		XPath.delete_all
-		Category.delete_all
+		Product.erase_all
+		Url.erase_all
+		XPath.erase_all
+		Category.erase_all
 
 		URLS_ARRAY.each {
 			|url_row|
@@ -85,6 +85,8 @@ class ProductsController < ApplicationController
 	end
 
 	def button
+		Product.erase_all
+
 		section_name = params["section_name"]
 		# Utilizamos el section_name para scrappear lo seleccionado por el usuario.
 
@@ -104,20 +106,52 @@ class ProductsController < ApplicationController
 
 		url_to_scrap = Url.get_url(section_name)
 
+		# begin
+		# 	scrapper = SupermarketScrapper.new
+		# 	scrapper.process_pages_from_url(url_to_scrap, info_hash)
+		# 	@product_list = Product.all
+		# 	@product_list = @product_list.order_by_likes(@product_list)
+		# 	render '/products/' + params["section_name"]
+		# rescue
+		# 	redirect_to "/errors/index"
+		# end
+
 		scrapper = SupermarketScrapper.new
 		scrapper.process_pages_from_url(url_to_scrap, info_hash)
-
 		@product_list = Product.all
-		# @product_list = @product_list.filter_by_params(params)
-
-
+		@product_list = @product_list.order_by_likes(@product_list)
 		render '/products/' + params["section_name"]
 	end
 
 	def filter_button
 		@product_list = Product.all
 		@product_list = @product_list.filter_by_params(params)
+		@product_list = @product_list.order_by_likes(@product_list)
 
 		render '/products/' + params["section_name"]
 	end
+
+	def like_product
+		Like.update_likes(params)
+
+		@product_list = Product.all
+		@product_list = @product_list.order_by_likes(@product_list)
+
+		# Redirecciona sin tener el cuenta los params, el render los tiene en cuenta.
+		redirect_to "/#{params["section_name"]}"
+	end
+
+	def star_product
+		Star.add_product(params[:plu])
+
+		@product_list = Product.all
+		@product_list = @product_list.order_by_likes(@product_list)
+
+		redirect_to "/#{params["section_name"]}"
+	end
+
+	def show_error_page
+        redirect_to "/errors/index"
+        
+    end
 end

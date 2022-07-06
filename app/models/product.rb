@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
-    def self.fill_with(section)
-
+    def self.order_by_likes(product_list)
+        product_list = product_list.select("products.plu, likes.likes, products.name, products.category, products.img_link, products.price, products.size").joins("LEFT JOIN likes ON products.plu = likes.plu").order("likes desc")
     end
 
     def self.filter_by_params(params)
