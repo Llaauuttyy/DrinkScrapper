@@ -1,7 +1,7 @@
 p {
     font-family: 'DM Sans', sans-serif;
     height: 100%;
-    color:#680653;
+    color:#bb3fa0;
 }
 
 label {
@@ -22,48 +22,33 @@ h1 {
     text-align: center;
 }
 
-h2 {
-    font-size: 18px;
-    text-decoration: underline;    
-}
-
-body {
-    font-family: 'DM Sans', sans-serif;
-    width: 100vw; 
-    box-sizing: border-box;
-    text-align: center;
-    background: rgb(2,0,36);
-    background: linear-gradient(176deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 53%, rgba(0,212,255,1) 100%);
-}
 
 .delete-button {
-    
-    text-align: end;
+    text-align: center;
     margin: 5px;
-}
+} 
 
 .reviews {
     font-family: sans-serif;
     font-size: 18px;
-    color: #680653;
-    background: #0b041b;
+    color: #ffffff;
+    background: #1b084a;
     margin: 0 400px 25px;
-    padding: 10px;
+    padding: 5px;
     border: 5px solid #5878ca;
 }
 
 .review {
     border: 5px solid #5878ca;
-    margin-bottom: 10px;
+    margin-bottom: 3px;
 }
 
 .new_review {
     font-family: sans-serif;
     font-size: 18px;
     color: #000000;
-    background: #0b041b;
+    background: #1b084a;
     margin: 0 400px 25px;
-    padding: 20px;
+    padding: 10px;
     border: 5px solid #5878ca;
 }
-

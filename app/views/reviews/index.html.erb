@@ -1,4 +1,6 @@
 <%= stylesheet_link_tag "reviews.css", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "style"%>
+<%= stylesheet_link_tag "products"%>
 
 <h1>REVIEWS DE PRODUCTOS</h1>
 
@@ -12,17 +14,16 @@
 		<%= form.label :query, "Review:  " %>
 		<%= form.text_field :review %>
 		<br>
-		<br>
 		<%= form.submit "Enviar" %>
 	<% end %>
 </div>
 
 <div class="reviews">
-	<h2> REVIEWS </h2>
+	<p> <b> REVIEWS </b> </p>
 	<% ReviewsController.get_reviews(params[:plu]).each do |review| %>
 		<div>
 			<article class= "review">
-				<h2> <%= "#{review.reviewer_name}" %> </h2>
+				<p> <%= "#{review.reviewer_name}" %> </p>
 				<p> <%= "#{review.review}" %> </p>
 			<div class="delete-button"> 
 				<%= button_to "❌", "/reviews/index/#{review.plu}/#{review.id}", method: :delete %> 

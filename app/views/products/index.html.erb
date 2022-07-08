@@ -7,15 +7,13 @@
 </nav>
 
 <%# <%= stylesheet_link_tag "application" %>
-<%= stylesheet_link_tag "style" %>
+<%= stylesheet_link_tag "style.css" %>
 <%= stylesheet_link_tag "scrap_buttons" %>
 
 <div class='scrap-buttons-div'>
-    <ul>
-        <li class="scrap_button"> <%= button_to "B. Sin alcohol", "/bebidas_sin_alcohol" %> </li>
-        <li class="scrap_button"> <%= button_to "B. Con alcohol", "/bebidas_con_alcohol" %> </li>
-        <li class="scrap_button"> <%= button_to "Lacteos", "/lacteos" %> </li>
-        <li class="scrap_button"> <%= button_to "Golosinas", "/golosinas" %> </li>
-        <li class="scrap_button"> <%= button_to "Infusiones", "/infusiones" %> </li>
-    </ul>
+    <%= button_to "B. Sin alcohol", "/bebidas_sin_alcohol" %>
+    <%= button_to "B. Con alcohol", "/bebidas_con_alcohol" %> 
+    <%= button_to "Lacteos", "/lacteos" %> 
+    <%= button_to "Golosinas", "/golosinas" %> 
+    <%= button_to "Infusiones", "/infusiones" %>
 </div>
